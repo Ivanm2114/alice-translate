@@ -16,6 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 start = True
 
+
 @app.route('/post', methods=['POST'])
 def main():
     logging.info(f'Request: {request.json!r}')
@@ -35,7 +36,7 @@ def handle_dialog(res, req):
     global start
     if start:
         res['response']['text'] = 'Привет, я переводчик\n' \
-                                  'Испльзуйте конструкцию: "Переведи слово: (слово для перевода)"'
+                                  'Испльзуйте конструкцию:\n "Переведи слово: (слово для перевода)"'
         start = False
     else:
         word = req['request']["original_utterance"].split(':')[1]
