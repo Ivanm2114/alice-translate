@@ -34,10 +34,11 @@ def main():
 def handle_dialog(res, req):
     global start
     if start:
-        res['response']['text'] = 'Привет, я переводчик'
+        res['response']['text'] = 'Привет, я переводчик\n' \
+                                  'Испльзуйте конструкцию: "Переведи слово: (слово для перевода)"'
         start = False
     else:
-        word = req['original_utterance'].split(':')[1]
+        word = req['request']["original_utterance"].split(':')[1]
 
         url = "https://translated-mymemory---translation-memory.p.rapidapi.com/api/get"
 
